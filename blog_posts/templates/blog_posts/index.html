@@ -1,0 +1,44 @@
+{% extends "blog_posts/base.html" %}
+
+{% block content %}
+
+
+
+<div class="container mt-4">
+    <a href="{% url 'blogPost'%}" type="submit" class="btn btn-secondary mb-5" >Add Post</a>
+
+    <form>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="category">
+            <div class="form-text">Search by Category </div>
+        </div>
+        <button type="submit" class="btn btn-primary" >Search</button>
+    </form>
+</div>
+    <div class="row row-cols-1 row-cols-md-3 g-4 p-4">
+        {% for blogs in blog  %}
+        <div class="col">
+        <div class="card h-100">
+            
+            <div class="card-body">
+                <h5 class="card-title">{{blogs.author}}</h5>
+                <p class="card-text">{{blogs.post}}</p>
+                <p class="card-text">Category:{{blogs.categories}}</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item p-0" >tags:#{{blogs.tag}}</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <small class="text-body-secondary">{{blogs.date_created}}</small>
+            </div>
+            <div class="container justify-content">
+                <a href="{% url 'editBlog' blogs.id %}" class="p-3"> Edit </a>
+                <a href="{% url 'deleteBlog' blogs.id %}"> Delete </a>
+            </div>
+            
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

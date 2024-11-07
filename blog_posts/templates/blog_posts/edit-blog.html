@@ -1,0 +1,19 @@
+{% extends "blog_posts/base.html" %}
+
+{% block content %}
+  
+
+<form method="POST">
+
+    {% csrf_token %}
+    {% for field in form  %}
+        {{field.label}}
+        <br>
+        {{field}}
+      
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+      
+</form>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends "blog_posts/base.html" %}
+
+{% block content %}
+   
+    <main class="formPage my-xl">
+        <div class="content-box">
+            <div class="formWrapper">
+                <a class="backButton" href="#"><i class="im im-angle-left"></i></a>
+                <br>
+
+                <form class="form" action="" method="POST">
+                    {% csrf_token %}
+                    <p> Are you sure you want to delete "{{blog.tag}}"? </p>
+                    <a class="btn btn--sub btn--lg  my-md" href="{% url 'home' %}"> Go back </a>
+
+
+                    <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
