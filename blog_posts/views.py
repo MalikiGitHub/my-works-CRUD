@@ -7,15 +7,17 @@ from .models import Blog
 
 # Create your views here.
 def blogHomePage(request):
-    if 'category' in request.GET:
-        q=request.GET['category']
-        blog = Blog.objects.filter(categories__categories__icontains=q)
-    else:
-        blog = Blog.objects.all()
+    blog = Blog.objects.all()
+
+    # if 'category' in request.GET:
+    #     q=request.GET['category']
+    #     blog = Blog.objects.filter(categories__categories__icontains=q)
+    # else:
+    #     blog = Blog.objects.all()
         
     response_data = {'blog': list(blog.values())}
     return JsonResponse(response_data)
-    return render(request, 'blog_posts/index.html', response_data)
+    # return render(request, 'blog_posts/index.html', response_data)
 
 
 def blogPost(request):
