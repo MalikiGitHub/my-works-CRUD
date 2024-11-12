@@ -45,6 +45,12 @@ def editBlog(request, pk):
         form = BlogForm(instance=blog)  
     return render(request, 'blog_posts/blog.html', {'form':form})
 
+
+def DetailBlog(request, pk):
+    blog = Blog.objects.get(id=pk)
+
+    return render(request, 'blog_posts/details.html', {'blog':blog})
+
 def deleteBlog(request, pk):
     blog = Blog.objects.get(id=pk)
     
