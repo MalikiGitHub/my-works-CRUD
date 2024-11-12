@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from .forms import BlogForm
+from django.http import JsonResponse
 
 from .models import Blog
 
@@ -11,7 +12,10 @@ def blogHomePage(request):
         blog = Blog.objects.filter(categories__categories__icontains=q)
     else:
         blog = Blog.objects.all()
-    return render(request, 'blog_posts/index.html', {'blog':blog})
+        
+    response_data = {'blog': list(blog.values())}
+    return JsonResponse(response_data)
+    return render(request, 'blog_posts/index.html', response_data)
 
 
 def blogPost(request):

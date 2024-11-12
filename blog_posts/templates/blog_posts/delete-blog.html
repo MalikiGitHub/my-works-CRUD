@@ -11,6 +11,7 @@
                 <form class="form" action="" method="POST">
                     {% csrf_token %}
                     <p> Are you sure you want to delete "{{blog.tag}}"? </p>
+                    
                     <a class="btn btn--sub btn--lg  my-md" href="{% url 'home' %}"> Go back </a>
 
 
